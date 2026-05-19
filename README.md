@@ -1,78 +1,90 @@
-# Agentic-Debate-RAG-System
-Agentic Debate RAG System is a multi-agent retrieval-augmented generation framework for scientific reasoning and hypothesis generation. The system combines RAG pipelines, LLMs, and collaborative debate agents to analyze literature, evaluate competing explanations, and generate evidence-grounded scientific conclusions.
-
-## Overview
-
-This project is a multi-agent Retrieval-Augmented Generation (RAG) framework designed for scientific reasoning, evidence-grounded debate, and hypothesis generation.
-
-The system combines:
-- Retrieval pipelines
-- Large language models (LLMs)
-- Multi-agent debate workflows
-- Iterative critique and refinement
-
-to generate more reliable, interpretable, and evidence-supported scientific responses.
-
-Instead of relying on a single LLM response, the framework allows multiple specialized agents to debate, critique, defend, and refine scientific reasoning using retrieved literature evidence.
-
+# 🧠 Causal Feature Extraction for Oxidation–Corrosion Mechanism Discovery
 ---
 
-# Key Features
+# 🔬 Overview 
 
-- Retrieval-Augmented Generation (RAG)
-- Multi-agent scientific debate framework
-- Evidence-grounded reasoning
-- Iterative critique and refinement
-- Scientific hypothesis generation
-- Literature-aware reasoning
-- Structured debate memory
-- Support for local scientific knowledge bases
-- Docker-compatible workflows
+This repository presents a causal machine learning framework for extracting mechanistically interpretable features governing high-temperature oxidation in complex alloys.
+
+We bridge: Predictive materials modeling → Causal mechanism discovery by integrating: Doubly Robust Learning (DRL) approach, SHAP-based explainability, Conditional feature importance (CSVI) ranking, Multi-condition oxidation modeling
 
 ---
-
-# System Architecture
-
-The framework uses multiple collaborative agents with different reasoning roles.
-
-## Domain expert Agents
-- Retrieves domain-relevant scientific evidence
-- Generate competing explanations
-- Defend alternative hypotheses
-- Challenge assumptions and reasoning
-
-## Critic Agent
-- Evaluates logical consistency
-- Detects unsupported claims
-- Verifies evidence grounding
-
-## Summary Agent
-- Summarizes literature findings
-- Provides supporting references
-- Synthesizes debate outcomes
-- Produces final evidence-supported conclusions
-
----
-
-# Workflow
+# 🧭 Framework Pipeline
+<img width="958" height="512" alt="image" src="https://github.com/user-attachments/assets/477d6264-c4d7-4a38-b9b0-032c85867f28" />
 
 ```text
-User Question
-      │
-      ▼
-Document Retrieval
-      │
-      ▼
-Multi-Agent Debate
-      │
-      ▼
-Critic Evaluation
-      │
-      ▼
-Summary Synthesis
-      │
-      ▼
-Final Response
+Raw Literature Data
+        ↓
+Curve Digitization (4,680 experiments)
+        ↓
+Feature Engineering (thermo + composition + physics)
+        ↓
+ML Models (XGBoost, Random Forest...)
+        ↓
+SHAP Explanation
+        ↓
+Conditional Causal Scoring (CSVI)
+        ↓
+Physical Interpretation High Score Feature
+        ↓
+Experiment Validation 
 ```
+---
+# 🧩 System Architecture
+```text
+
+        ┌────────────────────────────┐
+        │  Alloy Composition Space   │
+        └────────────┬───────────────┘
+                     ↓
+        ┌────────────────────────────┐
+        │   ML Prediction Models     │
+        └────────────┬───────────────┘
+                     ↓
+        ┌────────────────────────────┐
+        │   SHAP Attribution Layer   │
+        └────────────┬───────────────┘
+                     ↓
+        ┌────────────────────────────┐
+        │   CSVI Causal Scoring      │
+        └────────────┬───────────────┘
+                     ↓
+        ┌────────────────────────────┐
+        │ Mechanistic Interpretation │
+        └────────────────────────────┘
+```
+```text
+📊 Dataset
+📚 786 publications
+📈 4,680 oxidation curves
+🧪 2,414 unique alloy compositions
+🧬 64 elemental species
+```
+
+# 📁 Repository Structure
+```text
+causal-feature-extraction/
+│
+├── data/
+├── features/
+├── models/
+├── causal/
+│   ├── shap_analysis.py
+│   ├── csvi.py
+│
+├── clustering/
+├── visualization/
+├── experiments/
+└── main.py
+```
+
+---
+# 📌 Applications
+High-temperature alloy design
+Oxidation prediction
+Mechanism-aware materials discovery
+Physics-informed machine learning
+HEA (high-entropy alloy) screening
+
+# Disclaimer
 
 This repository features generalized prototypes and architectural workflows related to the manuscript 'A multi-agent large language model framework for mechanistic hypothesis generation in high-temperature alloy design', currently under review at Npj Computational Materials. Core proprietary datasets and specialized weights are withheld pending publication.
